@@ -1,0 +1,107 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}
+body,
+header,
+footer,
+nav,
+aside,
+article,
+section,
+main,
+ol,
+ul,
+li,
+a,
+p,
+div,
+address,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+table,
+caption,
+thead,
+tbody,
+th,
+td,
+dl,
+dt,
+dd,
+input,
+button,
+select,
+option,
+textarea,
+figure,
+figcaption,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    backdrop-filter: none;
+}
+ol,
+ul,
+li {
+    list-style: none;
+}
+img {
+    display: block;
+    border: 0;
+}
+a {
+    text-decoration: none;
+}
+address,
+em,
+i {
+    font-style: normal;
+}
+button,
+fieldset,
+select,
+input {
+    border: 0;
+    outline: none;
+}
+button {
+    cursor: pointer;
+}
+input {
+    appearance: none;
+}
+legend,
+caption,
+hr {
+    display: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.sr_only {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
