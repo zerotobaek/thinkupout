@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/yymmb/thinkupout/static/css/main.d743a1c0.css",
+    "main.js": "/yymmb/thinkupout/static/js/main.1f5088dc.js",
+    "static/js/787.a30898f7.chunk.js": "/yymmb/thinkupout/static/js/787.a30898f7.chunk.js",
+    "index.html": "/yymmb/thinkupout/index.html",
+    "main.d743a1c0.css.map": "/yymmb/thinkupout/static/css/main.d743a1c0.css.map",
+    "main.1f5088dc.js.map": "/yymmb/thinkupout/static/js/main.1f5088dc.js.map",
+    "787.a30898f7.chunk.js.map": "/yymmb/thinkupout/static/js/787.a30898f7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d743a1c0.css",
+    "static/js/main.1f5088dc.js"
+  ]
+}
