@@ -7,70 +7,69 @@ import { onAuthStateChanged, updateCurrentUser, updateProfile } from 'firebase/a
 import { DefalutBg, Loading, ModeBtn } from './components/styled';
 
 function App() {
-    const [loading, setLoading] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userInfo, setUserInfo] = useState(null);
-    const [darkMode, setDarkMode] = useState(true);
-    useEffect(() => {
-        onAuthStateChanged(authService, (user) => {
-            console.log(user);
-            if (user) {
-                if (user.displayName === null || user.displayName === '') {
-                    updateProfile(user, {
-                        displayName: user.email.split('@')[0],
-                    });
-                }
-                if (user.photoURL === null || user.photoURL === '') {
-                    updateProfile(user, {
-                        photoURL: 'img/nonUserProfile.png',
-                    });
-                }
-                setIsLoggedIn(true);
-                setUserInfo(user);
-            } else {
-                setIsLoggedIn(false);
-            }
-            setLoading(true);
-        });
-    }, []);
-    const onClick = () => {
-        setDarkMode((prev) => !prev);
-    };
-    const userInfoChange = async () => {
-        await updateCurrentUser(authService, authService.currentUser);
-        setUserInfo(authService.currentUser);
-    };
-    return (
+  const [loading, setLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
+  useEffect(() => {
+    onAuthStateChanged(authService, (user) => {
+      if (user) {
+        if (user.displayName === null || user.displayName === '') {
+          updateProfile(user, {
+            displayName: user.email.split('@')[0],
+          });
+        }
+        if (user.photoURL === null || user.photoURL === '') {
+          updateProfile(user, {
+            photoURL: 'img/nonUserProfile.png',
+          });
+        }
+        setIsLoggedIn(true);
+        setUserInfo(user);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setLoading(true);
+    });
+  }, []);
+  const onClick = () => {
+    setDarkMode((prev) => !prev);
+  };
+  const userInfoChange = async () => {
+    await updateCurrentUser(authService, authService.currentUser);
+    setUserInfo(authService.currentUser);
+  };
+  return (
+    <>
+      {loading ? (
         <>
-            {loading ? (
-                <>
-                    <AppRouter
-                        isLoggedIn={isLoggedIn}
-                        userInfo={userInfo}
-                        darkMode={darkMode}
-                        userInfoChange={userInfoChange}
-                    ></AppRouter>
-                    {/* {!isLoggedIn && ( */}
-                    <ModeBtn type="button" $darkmode={darkMode} onClick={onClick}>
-                        {darkMode ? 'Light' : 'Dark'}
-                    </ModeBtn>
-                    {/* )} */}
-                </>
-            ) : (
-                <DefalutBg
-                    $darkmode={darkMode}
-                    style={{
-                        opacity: 1,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Loading $darkmode={darkMode}></Loading>
-                </DefalutBg>
-            )}
+          <AppRouter
+            isLoggedIn={isLoggedIn}
+            userInfo={userInfo}
+            darkMode={darkMode}
+            userInfoChange={userInfoChange}
+          ></AppRouter>
+          {/* {!isLoggedIn && ( */}
+          <ModeBtn type="button" $darkmode={darkMode} onClick={onClick}>
+            {darkMode ? 'Light' : 'Dark'}
+          </ModeBtn>
+          {/* )} */}
         </>
-    );
+      ) : (
+        <DefalutBg
+          $darkmode={darkMode}
+          style={{
+            opacity: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Loading $darkmode={darkMode}></Loading>
+        </DefalutBg>
+      )}
+    </>
+  );
 }
 
 export default App;
