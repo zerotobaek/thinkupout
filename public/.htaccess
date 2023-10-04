@@ -1,4 +1,13 @@
 Options -MultiViews
 RewriteEngine On
+
+# HTTPS 리디렉션 규칙
+RewriteCond %{HTTPS} off
+RewriteCond %{SERVER_NAME} !=byym.dothome.co.kr [NC]
+RewriteCond %{REQUEST_URI} !^/.well-known
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# React Router 규칙
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [QSA,L]
